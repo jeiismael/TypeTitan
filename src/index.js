@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import GridLayout from './Components/GridLayout';
+import TypeBox from './Components/TypeBox';
 import Header from './Components/Header.js';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <GridLayout />
+    <Header />
+    <TypeBox />
   </React.StrictMode>
 );
 
