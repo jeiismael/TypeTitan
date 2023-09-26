@@ -1,19 +1,5 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 .typebox {
-  background-color: #F0DB4F;
+  background-color: tan;
   padding: 1rem;
   border-radius: .5rem;
   width: 700px;
@@ -48,3 +34,4 @@ code {
   color: red;
   text-decoration: underline;
 }
+
