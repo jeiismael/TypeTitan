@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import TypeBox from './Components/TypeBox';
 import Header from './Components/Header.js';
+import Timer from './Components/Timer';
 import reportWebVitals from './reportWebVitals';
+import HomePage from './Components/HomePage.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Header />
-    <TypeBox />
+    <HomePage />
+    {/* <TypeBox /> */}
   </React.StrictMode>
 );
 

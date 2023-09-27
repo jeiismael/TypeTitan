@@ -1,6 +1,7 @@
 const Timer = () => {
-    const timerElement = document.getElementById('timer')
-    return (  );
+    return ( 
+        <div class="timer" id="timer">60</div>
+     )
 }
  
 export default Timer;
