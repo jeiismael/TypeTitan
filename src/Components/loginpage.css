@@ -30,7 +30,7 @@ form {
 		&:after {
 			content: ""; position: absolute; top: 0; left: 0; z-index: 10; 
 			width: inherit; height: inherit; box-sizing: border-box;
-			border: solid 2.5px $darkBlue; border-radius: 50%;
+			border: solid 2.5px #217093; border-radius: 50%;
 		}
 	}
 	.inputGroup {
