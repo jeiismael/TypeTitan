@@ -2,12 +2,11 @@ import Button from "react-bootstrap/Button";
 import Levels from "./Levels";
 
 const HomePage = () => {
-<<<<<<< HEAD
   return (
     <div class="content">
-		<div class="heading">
+		{/* <div class="heading">
 		Type Titan
-		</div>
+		</div> */}
 		<div class="header">
 		<div class="wpm">
 			<div class="header_text">WPM</div>
@@ -36,51 +35,10 @@ const HomePage = () => {
 	</div>
 	<textarea class="input_area"
 	placeholder="start typing here..."></textarea>
-	<button class="restart_btn">
+	<Button class="restart_btn">
 	Restart
-	</button>
+	</Button>
 </div>
-=======
-	return (
-		<div class="content">
-			{/* <div class="heading">
-	Type Titan
-	</div> */}
-			<div class="header">
-				<div class="wpm">
-					<div class="header_text">WPM</div>
-					<div class="curr_wpm">100</div>
-				</div>
-				<div class="cpm">
-					<div class="header_text">CPM</div>
-					<div class="curr_cpm">100</div>
-				</div>
-				<div class="errors">
-					<div class="header_text">Errors</div>
-					<div class="curr_errors"></div>
-				</div>
-				<div class="timer">
-					<div class="header_text">Time</div>
-					<div class="curr_time"></div>
-				</div>
-				<div class="accuracy">
-					<div class="header_text">% Accuracy</div>
-					<div class="curr_accuracy"></div>
-				</div>
-			</div>
-
-			<div class="quote">Click on the area below to start the game.</div>
-			<textarea
-				class="input_area"
-				placeholder="start typing here..."
-				oninput="processCurrentText()"
-				onfocus="startGame()"
-			></textarea>
-			<button class="restart_btn" onclick="resetValues()">
-				Restart
-			</button>
-		</div>
->>>>>>> f484e0d3555db78a11e942934a17cc999b51d574
 
 		// <>
 		//   <div class="parent">
