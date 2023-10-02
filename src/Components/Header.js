@@ -5,7 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function Header() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="">
       <Container>
         <Navbar.Brand href="#home">Type Titan</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

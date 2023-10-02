@@ -7,11 +7,12 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: lightblue;
+            background-image: url('./bg.png');
         }
 
         h1 {
             text-align: center;
+            color: white;
         }
 
         table {
@@ -21,7 +22,7 @@
         }
 
         th, td {
-            border: 1px solid #ccc;
+            border: 3px solid #ccc;
             padding: 10px;
             text-align: left;
         }
@@ -34,15 +35,24 @@
             background-color: teal;
         }
 
+        tr:nth-child(odd) {
+            color:white;
+        }
+
         tr:hover {
             background-color: #ddd;
+        }
+        
+        tr:first-child {
+            background-color: #FFD700; 
+            color: black;
         }
     </style>
 </head>
 <body>
     <h1>Leaderboards</h1>
     <table>
-        <tr>
+        <tr class="top">
             <th>Rank</th>
             <th>Name</th>
             <th>WPM </th>

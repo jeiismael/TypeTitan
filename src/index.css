@@ -101,7 +101,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #A6F6FF;
+  background-image: url('bg.png');
   color: black;
   text-align: center;
   height: 90vh;

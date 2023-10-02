@@ -1,19 +1,41 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import Figure from 'react-bootstrap/Figure';
+import Beginner from './Beginner.png';
+import Intermediate from './Intermediate.png';
+import Expert from './Expert.png';
+import Image from 'react-bootstrap/Image';
+
 
 function Levels() {
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
+    <>
+    <Image src={Beginner}/>;
+    <Image src={Intermediate}/>;
+    <Image src={Expert}/>;
+    {/* <Figure>
+    <Figure.Image
+      width={400}
+      height={50}
+      src={Beginner}
+    />
+    
+  </Figure>
+  <Figure>
+    <Figure.Image
+      width={400}
+      height={50}
+       src={Intermediate}
+    />
+    
+  </Figure>
+  <Figure>
+    <Figure.Image
+      width={400}
+      height={50}      
+      src={Expert}
+    />
+    
+  </Figure> */}
+  </>
   );
 }
 

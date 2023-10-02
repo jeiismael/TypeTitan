@@ -1,6 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Levels from "./Levels";
 
+
 const HomePage = () => {
   return (
     <div class="content">
@@ -8,36 +9,37 @@ const HomePage = () => {
 		Type Titan
 		</div> */}
 		<div class="header">
-		<div class="wpm">
-			<div class="header_text">WPM</div>
-			<div class="curr_wpm">100</div>
+		<div className="wpm">
+			<div className="header_text">WPM</div>
+			<div className="curr_wpm">100</div>
 		</div>
-		<div class="cpm">
-			<div class="header_text">CPM</div>
-			<div class="curr_cpm">100</div>
+		<div className="cpm">
+			<div className="header_text">CPM</div>
+			<div className="curr_cpm">100</div>
 		</div>
-		<div class="errors">
-			<div class="header_text">Errors</div>
-			<div class="curr_errors"></div>
+		<div className="errors">
+			<div className="header_text">Errors</div>
+			<div className="curr_errors"></div>
 		</div>
-		<div class="timer">
-			<div class="header_text">Time</div>
-			<div class="curr_time"></div>
+		<div className="timer">
+			<div className="header_text">Time</div>
+			<div className="curr_time"></div>
 		</div>
-		<div class="accuracy">
-			<div class="header_text">% Accuracy</div>
-			<div class="curr_accuracy"></div>
+		<div className="accuracy">
+			<div className="header_text">% Accuracy</div>
+			<div className="curr_accuracy"></div>
 		</div>
 	</div>
 
-	<div class="quote">
+	<div className="quote">
 	Click on the area below to start the game.
 	</div>
-	<textarea class="input_area"
+	<textarea className="input_area"
 	placeholder="start typing here..."></textarea>
-	<Button class="restart_btn">
+	<Button className="restart_btn">
 	Restart
 	</Button>
+	<Levels></Levels>
 </div>
 
 		// <>
