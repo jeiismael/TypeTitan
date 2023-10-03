@@ -1,1 +1,1 @@
-Typing Tutor by Jerry Joy Ismael
+Typing Tutor developed by Jerry Joy Ismael
