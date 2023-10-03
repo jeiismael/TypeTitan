@@ -8,34 +8,10 @@ import Image from 'react-bootstrap/Image';
 function Levels() {
   return (
     <>
-    <Image src={Beginner}/>;
-    <Image src={Intermediate}/>;
-    <Image src={Expert}/>;
-    {/* <Figure>
-    <Figure.Image
-      width={400}
-      height={50}
-      src={Beginner}
-    />
-    
-  </Figure>
-  <Figure>
-    <Figure.Image
-      width={400}
-      height={50}
-       src={Intermediate}
-    />
-    
-  </Figure>
-  <Figure>
-    <Figure.Image
-      width={400}
-      height={50}      
-      src={Expert}
-    />
-    
-  </Figure> */}
-  </>
+      <Image className='levelimage' src={Beginner}/>
+      <Image className='levelimage' src={Intermediate}/>
+      <Image className='levelimage' src={Expert}/>
+    </>
   );
 }
 

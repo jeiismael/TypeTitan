@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Levels from "./Levels";
+import MiniLeaderBoards from "./MiniLeaderBoards";
 
 
 const HomePage = () => {
@@ -8,7 +9,7 @@ const HomePage = () => {
 		{/* <div class="heading">
 		Type Titan
 		</div> */}
-		<div class="header">
+		<div class="nav">
 		<div className="wpm">
 			<div className="header_text">WPM</div>
 			<div className="curr_wpm">100</div>
@@ -36,10 +37,11 @@ const HomePage = () => {
 	</div>
 	<textarea className="input_area"
 	placeholder="start typing here..."></textarea>
-	<Button className="restart_btn">
+	<Button className="restart_btn" variant="dark">
 	Restart
 	</Button>
 	<Levels></Levels>
+	
 </div>
 
 		// <>

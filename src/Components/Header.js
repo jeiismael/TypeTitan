@@ -3,9 +3,10 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+
 function Header() {
   return (
-    <Navbar expand="lg" className="">
+    <Navbar expand="lg" className="nav" data-bs-theme="dark" bg="dark">
       <Container>
         <Navbar.Brand href="#home">Type Titan</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -13,7 +14,7 @@ function Header() {
           <Nav className="me-auto">
             <Nav.Link href="#home">Test Yourself</Nav.Link>
             <Nav.Link href="#link">Leaderboards</Nav.Link>
-            <NavDropdown title="Account" id="basic-nav-dropdown">
+            <NavDropdown title="Account" id="basic-nav-dropdown" className='ml-auto'>
               <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Settings
