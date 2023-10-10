@@ -1,48 +1,44 @@
 import Button from "react-bootstrap/Button";
 import Levels from "./Levels";
-import MiniLeaderBoards from "./MiniLeaderBoards";
 
 
 const HomePage = () => {
   return (
     <div class="content">
-		{/* <div class="heading">
-		Type Titan
-		</div> */}
-		<div class="nav">
-		<div className="wpm">
-			<div className="header_text">WPM</div>
-			<div className="curr_wpm">100</div>
+		
+		<div class="boxes">
+			<div className="wpm">
+				<div className="header_text">WPM</div>
+				<div className="curr_wpm"></div>
+			</div>
+			<div className="cpm">
+				<div className="header_text">CPM</div>
+				<div className="curr_cpm"></div>
+			</div>
+			<div className="errors">
+				<div className="header_text">Errors</div>
+				<div className="curr_errors"></div>
+			</div>
+			<div className="timer">
+				<div className="header_text">Time</div>
+				<div className="curr_time"></div>
+			</div>
+			<div className="accuracy">
+				<div className="header_text">% Accuracy</div>
+				<div className="curr_accuracy"></div>
+			</div>
 		</div>
-		<div className="cpm">
-			<div className="header_text">CPM</div>
-			<div className="curr_cpm">100</div>
-		</div>
-		<div className="errors">
-			<div className="header_text">Errors</div>
-			<div className="curr_errors"></div>
-		</div>
-		<div className="timer">
-			<div className="header_text">Time</div>
-			<div className="curr_time"></div>
-		</div>
-		<div className="accuracy">
-			<div className="header_text">% Accuracy</div>
-			<div className="curr_accuracy"></div>
-		</div>
-	</div>
-
-	<div className="quote">
-	Click on the area below to start the game.
-	</div>
-	<textarea className="input_area"
-	placeholder="start typing here..."></textarea>
-	<Button className="restart_btn" variant="dark">
-	Restart
-	</Button>
-	<Levels></Levels>
+			<div className="quote">
+			Click on the area below to start the game.
+			</div>
+			<textarea className="input_area" placeholder="start typing here..."></textarea>
+			<Button className="restart_btn" variant="dark">
+			Restart
+			</Button>
+			<Levels></Levels>
+			
 	
-</div>
+	</div>
 
 		// <>
 		//   <div class="parent">

@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import TypeBox from './Components/TypeBox';
 import Header from './Components/Header.js';
-import Timer from './Components/Timer';
+import Login from './Components/Login';
 import reportWebVitals from './reportWebVitals';
 import HomePage from './Components/HomePage.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,6 +13,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Header />
+    <Login></Login>
     <HomePage />
     <MiniLeaderBoards />
     <Footer></Footer>
