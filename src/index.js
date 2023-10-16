@@ -8,12 +8,14 @@ import HomePage from './Components/HomePage.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MiniLeaderBoards from './Components/MiniLeaderBoards';
 import Footer from './Components/Footer';
+import Register from './Components/Register';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Header />
-    <Login></Login>
+    {/* <Login></Login> */}
+    <Register></Register>
     <HomePage />
     <MiniLeaderBoards />
     <Footer></Footer>
@@ -23,4 +25,4 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals();

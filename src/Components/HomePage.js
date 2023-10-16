@@ -4,9 +4,9 @@ import Levels from "./Levels";
 
 const HomePage = () => {
   return (
-    <div class="content">
+    <div className="content">
 		
-		<div class="boxes">
+		<div className="boxes">
 			<div className="wpm">
 				<div className="header_text">WPM</div>
 				<div className="curr_wpm"></div>
