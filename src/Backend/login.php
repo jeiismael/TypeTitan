@@ -1,5 +1,5 @@
 <?php
-include "configg.php";
+include "config.php";
 
 if (isset($_POST['auth'])) {
     $data = json_decode($_POST['auth']);
@@ -25,20 +25,20 @@ if (isset($_POST['auth'])) {
                     "username" => $username
                 );
             } else {
-                $message = "Invalid";
+                $message = "Wrong Password";
                 $response = array(
                     "status" => 300,
-                    "title" => "Invalid",
+                    "title" => "Password error",
                     "message" => $message,
                     "username" => $username
                 );
             }
         }
     } else {
-        $mesasge = "invalid username";
+        $message = "Username not found";
         $response = array(
-            "status" => 400;
-            "title" => "Success"
+            "status" => 400,
+            "title" => "Failed",
             "message" => $message,
             "username" => ""
         );
