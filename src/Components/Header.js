@@ -2,21 +2,9 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import axios from 'axios';
 
 
 function Header() {
-  let apiLogin = "http://localhost/typetitan/src/Backend/login.php";
-  const handleLogout = () => {
-    let payload = {
-      username: '',
-      password: '',
-    };
-    axios.post(apiLogin, "auth=" + JSON.stringify(payload)).then((response) => {
-      console.log(response);
-    });
-
-  }
   return (
     <Navbar expand="lg" className="nav" data-bs-theme="dark" bg="dark">
       <Container>
@@ -33,7 +21,7 @@ function Header() {
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4" onClick={handleLogout}>
+              <NavDropdown.Item href="#action/3.4">
                 Signout
               </NavDropdown.Item>
             </NavDropdown>

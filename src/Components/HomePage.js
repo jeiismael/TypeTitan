@@ -27,6 +27,10 @@ const HomePage = () => {
           <div className="curr_accuracy"></div>
         </div>
       </div>
+      {/* <div className="quote">
+			Click on the area below to start the game.
+			</div>
+			<textarea className="input_area" placeholder="start typing here..."></textarea> */}
       <div>
         <TypeBox classname="input_area"></TypeBox>
       </div>
