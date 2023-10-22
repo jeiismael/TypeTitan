@@ -1,39 +1,35 @@
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import { Button } from 'react-bootstrap';
-import { useState } from 'react';
-import axios from 'axios';
+import { useState } from "react";
+import { Tab, Tabs, InputGroup, Form, Button } from "react-bootstrap";
+import { useEffect } from "react";
+import axios from "axios";
+const Log = () => {
+  let apiLogin = "http://localhost/typetitan/src/Backend/login.php";
 
-const Login = () => {
-    const [username, setUsername] = useState('');
-    const [password,setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-    const handleUsernameChange = (e) => {
-        setUsername(e.target.value);
-      };
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleLogin = () => {
     
-      const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-      };
-     
-    const handleLogin = (event) => {
-        // axios.post('', { username, password })
-        // .then((response) => {}
-            event.preventDefault();
-            console.log('Login Succesful');
-        
+    let payload = {
+      username: username,
+      password: password,
     };
+    axios.post(apiLogin, "auth=" + JSON.stringify(payload)).then((response) => {
+      console.log(response);
+    });
+  };
 
-    const handleChangeTab = () => {
-
-    }
-
-    return ( 
-        <>
-        <div className='login-container'>
-            <h2>Sign in</h2>
-        <InputGroup className="mb-3">
-        
+  return (
+    <>
+      <InputGroup className="mb-3">
         <Form.Control
           placeholder="Username"
           value={username}
@@ -41,25 +37,22 @@ const Login = () => {
           aria-label="Username"
           aria-describedby="basic-addon1"
         />
-        </InputGroup>  
-        <Form.Control
-        placeholder='Password'
+      </InputGroup>
+      <InputGroup className="mb-3">
+      <Form.Control
+        placeholder="Password"
         type="password"
         value={password}
         onChange={handlePasswordChange}
-        id="inputPassword"
+        id="inputPassword5"
         aria-describedby="passwordHelpBlock"
-        />
-        <span className='loginButtons'>
-            <Button variant='link' className="register-link" onClick={handleChangeTab}>Register</Button>
-        </span>
-        <span>
-            <Button type="submit" className="login-button" onClick={handleLogin}>Log In</Button>
-        </span>
-        </div>
-        
-        </>
-     );
-}
- 
-export default Login;
+      />
+      </InputGroup>
+      <Button type="submit" className="login-button" onClick={handleLogin}>
+        Log In
+      </Button>
+    </>
+  );
+};
+
+export default Log;

@@ -2,21 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Header from './Components/Header.js';
-import Login from './Components/Login';
+import Login from './Components/Login1';
 import reportWebVitals from './reportWebVitals';
 import HomePage from './Components/HomePage.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MiniLeaderBoards from './Components/MiniLeaderBoards';
 import Footer from './Components/Footer';
-import Register from './Components/Register';
+import Register from './Components/Register1';
+import LoginContainer from './Components/LoginContainer';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Header />
-    {/* <Login></Login> */}
-    <Register></Register>
+    <LoginContainer />
     <HomePage />
     <MiniLeaderBoards />
     <Footer></Footer>

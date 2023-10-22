@@ -74,14 +74,7 @@
   border-radius: .5rem;
 }
 
-.correct {
-  color: green;
-}
 
-.incorrect {
-  color: red;
-  text-decoration: underline;
-}
 
 .timer {
   top: 2rem;
@@ -320,4 +313,17 @@ tr:first-child {
 
 .loginButtons {
  position: relative;
+}
+
+.hide {
+  display: none;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+  text-decoration: underline;
 }
