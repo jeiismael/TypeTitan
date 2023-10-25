@@ -7,26 +7,7 @@ const HomePage = () => {
   return (
     <div className="content">
       
-      <div className="boxes">
-        <div className="wpm">
-          <div className="header_text">WPM</div>
-          <div className="curr_wpm"></div>
-        </div>
-        
-        <div className="cpm">
-          <div className="header_text">CPM</div>
-          <div className="curr_cpm"></div>
-        </div>
-        <div className="errors">
-          <div className="header_text">Errors</div>
-          <div className="curr_errors"></div>
-        </div>
-        <div className="accuracy">
-          <div className="header_text">% Accuracy</div>
-          <div className="curr_accuracy"></div>
-        </div>
-        <Timer />
-      </div>
+      
       {/* <div className="quote">
 			Click on the area below to start the game.
 			</div>
@@ -34,9 +15,9 @@ const HomePage = () => {
       <div>
         <TypeBox classname="input_area"></TypeBox>
       </div>
-      <Button className="restart_btn" variant="dark">
+      {/* <Button className="restart_btn" variant="dark">
         Restart
-      </Button>
+      </Button> */}
       <Levels></Levels>
     </div>
 

@@ -97,7 +97,7 @@
   align-items: flex-start;
   background-image: url('bg.png');
   color: black;
-  height: 90vh;
+  height: 95vh;
   }
   
   .heading {
@@ -132,18 +132,21 @@
   align-items: center;
   font-size: 16px;
   font-weight: bold;  
+  color: black;
   }
 
   .timer h1{
-    color: red;
+    color: yellow;
     margin: 0;
     padding: 0;
-  
-
   }
   .timer h4 {
     margin: 0;
     padding: 0;
+  }
+
+  .errors h4 {
+    color: red;
   }
   
   .cpm, .wpm {
@@ -187,18 +190,29 @@
   border-radius: 20px;
   left: 5px;
   }
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
   
   .restart_btn {
   position: relative;
   background-color: #326765;
   font-size: 1.5rem;
   padding: 25px;
-  margin: 15px;
+  margin-right: 15px;
   border: 0px;
   box-shadow: black 5px 8px 5px;
   display: flex;
-  
   }
+
+  .button-area {
+    align-self: flex-end;
+  }
+  
   
   .incorrect_char {
   color: red;
