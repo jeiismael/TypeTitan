@@ -74,14 +74,7 @@
   border-radius: .5rem;
 }
 
-.correct {
-  color: green;
-}
 
-.incorrect {
-  color: red;
-  text-decoration: underline;
-}
 
 .timer {
   top: 2rem;
@@ -122,11 +115,35 @@
   .cpm, .wpm {
   background-color: #6499E9;
   height: 60px;
-  width: 70px;
+  width: 100px;
   margin: 8px;
   padding: 12px;
   border-radius: 10px;
   box-shadow: black 5px 8px 5px;
+  text-align: center;
+  object-fit: contain;
+  width: 100px;
+  height: 60px;
+  border: 1px solid #ccc;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;  
+  }
+
+  .timer h1{
+    color: red;
+    margin: 0;
+    padding: 0;
+  
+
+  }
+  .timer h4 {
+    margin: 0;
+    padding: 0;
   }
   
   .cpm, .wpm {
@@ -137,6 +154,7 @@
   text-transform: uppercase;
   font-size: 0.6rem;
   font-weight: 600;
+  margin-top: 1px;
   }
   
   .curr_time, .curr_errors,
@@ -321,3 +339,13 @@ tr:first-child {
 .loginButtons {
  position: relative;
 }
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+  text-decoration: underline;
+}
+

@@ -1,56 +1,37 @@
-import Timer from "./Timer";
-import { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+
 const TypeBox = () => {
-  // const RANDOM_QUOTE_API_URL = 'http://api.quotable.io/random'
-  // const quoteDisplayElement = document.getElementById('quoteDisplay')
-  // const quoteInputElement = document.getElementById('quoteInput')
-
-  // quoteInputElement.addEventListener('input', () => {
-  //   const arrayQuote = quoteDisplayElement.querySelectorAll('span')
-  //   const arrayValue = quoteInputElement.value.split('')
-
-  //   let correct = true
-  //   arrayQuote.forEach((characterSpan, index) => {
-  //     const character = arrayValue[index]
-  //     if (character == null) {
-  //       characterSpan.classList.remove('correct')
-  //       characterSpan.classList.remove('incorrect')
-  //       correct = false
-  //     } else if (character === characterSpan.innerText) {
-  //       characterSpan.classList.add('correct')
-  //       characterSpan.classList.remove('incorrect')
-  //     } else {
-  //       characterSpan.classList.remove('correct')
-  //       characterSpan.classList.add('incorrect')
-  //       correct = false
-  //     }
-  //   })
-
-  //   if (correct) renderNewQuote()
-  // })
-
-  // function getRandomQuote() {
-  //     return fetch(RANDOM_QUOTE_API_URL)
-  //       .then(response => response.json())
-  //       .then(data => data.content)
-  //   }
-
-  //   async function renderNewQuote() {
-  //     const quote = await getRandomQuote()
-  //     quoteDisplayElement.innerHTML = ''
-  //     quote.split('').forEach(character => {
-  //       const characterSpan = document.createElement('span')
-  //       characterSpan.innerText = character
-  //       quoteDisplayElement.appendChild(characterSpan)
-  //     })
-  //     quoteInputElement.value = null
-  //   }
   const RANDOM_QUOTE_API_URL = "http://api.quotable.io/random";
+  const TIMER_DURATION = 60;
+  const WORDS_PER_MINUTE = 60 / TIMER_DURATION; // Words per minute (assuming 1 word per second)
 
-  const [quote, setQuote] = useState("...");
+  const [quote, setQuote] = useState("Press 'Start' to begin.");
   const [inputValue, setInputValue] = useState("");
-  const [inputCorrect, setInputCorrect] = useState(true);
+  const [inputClasses, setInputClasses] = useState([]);
+  const [isTyping, setIsTyping] = useState(false);
+  const [isFetchingQuote, setIsFetchingQuote] = useState(false);
+  const [timeRemaining, setTimeRemaining] = useState(TIMER_DURATION);
+
+  const inputRef = useRef(null);
+
+  const [totalCharactersTyped, setTotalCharactersTyped] = useState(0);
+  const [totalErrors, setTotalErrors] = useState(0);
+
+  const toggleFetchingQuote = () => {
+    if (isFetchingQuote) {
+      setIsFetchingQuote(false);
+      setInputValue("");
+      setQuote("Press Start to begin.");
+      setTimeRemaining(TIMER_DURATION);
+      setTotalCharactersTyped(0); // Reset character count
+      setTotalErrors(0); // Reset error count
+    } else {
+      getRandomQuote();
+      setIsFetchingQuote(true);
+      setIsTyping(true);
+      inputRef.current.focus();
+    }
+  };
 
   const getRandomQuote = async () => {
     try {
@@ -58,7 +39,8 @@ const TypeBox = () => {
       const data = await response.json();
       setQuote(data.content);
       setInputValue("");
-      setInputCorrect(true);
+      setInputClasses(Array(data.content.length).fill("untyped"));
+      setIsTyping(true);
     } catch (error) {
       console.error("Error fetching random quote:", error);
     }
@@ -68,30 +50,88 @@ const TypeBox = () => {
     const typedText = e.target.value;
     setInputValue(typedText);
 
-    const correct = quote.startsWith(typedText);
-    setInputCorrect(correct);
+    const newInputClasses = quote.split("").map((char, index) => {
+      if (typedText[index] === char) {
+        return "correct";
+      } else if (index < typedText.length) {
+        setTotalCharactersTyped((prevCount) => prevCount + 1);
+        return "incorrect";
+      }
+      return "untyped";
+    });
 
-    if (correct && typedText === quote) {
+    setInputClasses(newInputClasses);
+
+    const isInputCorrect = newInputClasses.every((charClass) => charClass === "correct");
+
+    if (isInputCorrect) {
       getRandomQuote();
+    } else {
+      // Count errors
+      setTotalErrors((prevErrors) => prevErrors + 1);
     }
   };
 
+  const handleCopy = (e) => {
+    e.preventDefault();
+  };
+
   useEffect(() => {
-    getRandomQuote();
-  }, []);
+    let timer;
+    if (isFetchingQuote && timeRemaining > 0) {
+      timer = setInterval(() => {
+        setTimeRemaining((prevTime) => prevTime - 1);
+      }, 1000);
+    }
+
+    if (timeRemaining === 0) {
+      clearInterval(timer);
+      setIsFetchingQuote(false);
+    }
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [isFetchingQuote, timeRemaining]);
+
+  const wordsTyped = totalCharactersTyped / 5; // Assuming an average word length of 5 characters
+  const wpm = (wordsTyped / TIMER_DURATION) * 60; // Words per minute
+
+  const cpm = (totalCharactersTyped / TIMER_DURATION) * 60; // Characters per minute
+
+  const accuracy = ((totalCharactersTyped - totalErrors) / totalCharactersTyped) * 100; // Accuracy percentage
 
   return (
     <>
-      <div class="typebox">
+      <div className="typebox">
         <div className="quote">
-          {quote}
+          {quote.split("").map((char, index) => (
+            <span key={index} onCopy={handleCopy} className={inputClasses[index]}>
+              {char}
+            </span>
+          ))}
         </div>
         <textarea
-          className={`input_area ${inputCorrect ? "correct" : "incorrect"}`}
-          autoFocus
+          ref={inputRef}
+          className="input_area"
           value={inputValue}
           onChange={handleInputChange}
         ></textarea>
+        <div className="timer">
+          <h1>{timeRemaining}</h1>
+          
+          <div>CPM: {cpm.toFixed(2)}</div>
+          
+        </div>
+        <div className="timer">
+        <div>WPM: {wpm.toFixed(2)}</div>
+        </div>
+        <div className="timer">
+        <div>Accuracy: {accuracy.toFixed(2)}%</div>
+        </div>
+        <button onClick={toggleFetchingQuote}>
+          {isFetchingQuote ? "Reset" : "Start"}
+        </button>
       </div>
     </>
   );
