@@ -5,9 +5,11 @@ import Register from "./Register.js";
 
 const LoginContainer = () => {
   const [key, setKey] = useState("Login");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <div className="login-container">
+      {isLoggedIn ? (
       <Tabs
         id="controlled-tab-example"
         activeKey={key}
@@ -18,6 +20,8 @@ const LoginContainer = () => {
         
         <Tab eventKey="Register" title="Register"><Register /></Tab>
       </Tabs>
+      ) : []
+}
     </div>
   );
 };

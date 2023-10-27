@@ -89,6 +89,8 @@ const TypeBox = () => {
       getRandomQuote();
     } else if (typedText.endsWith(" ")) {
       setTotalWordsTyped((prevWords) => prevWords + 1);
+    } else if (isInputCorrect) {
+      setTotalCharactersTyped((prevChar) => prevChar);
     }
   };
 

@@ -9,6 +9,7 @@ const Login = () => {
     let apiLogin = "http://localhost/typetitan/src/Backend/login.php"
     const [username, setUsername] = useState('');
     const [password,setPassword] = useState('');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     
 
     const handleUsernameChange = (e) => {
@@ -26,7 +27,13 @@ const Login = () => {
         };
         axios.post(apiLogin, "auth=" + JSON.stringify(payload))
         .then((response) => {
-          console.log(response);
+          const responseData = response.data;
+          if (responseData.status === 200) {
+            setIsLoggedIn(true);
+            alert(response.data.message);
+          } else{
+          alert(response.data.message);
+          }
         })
       }
 

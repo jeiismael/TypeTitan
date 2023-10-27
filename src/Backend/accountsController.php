@@ -49,46 +49,4 @@ if (isset($_POST['store'])) { //function store(Request $request)
     echo json_encode($response);
 
 }
-
-// if (isset($_POST['update'])) {
-//     $username = $_POST['id'];
-//     $request = json_decode($_POST['update']);
-
-//     $newAccount = array(
-//         "username" => $request->username,
-//         "password" => $request->password,
-//         "role" => $request->role
-//     );
-
-//     $isUpdated = $conn->query("UPDATE `tbl_accounts` SET `password`='{$newAccount['password']}',`role`='{$newAccount['role']}' WHERE username = '$username'");
-
-//     $response = array();
-
-//     if ($isUpdated) {
-//         $response["message"] = "Updated";
-//         $response["status"] = 200;
-//     } else {
-//         $response["message"] = "Failed";
-//         $response["status"] = 400;
-//     }
-//     echo json_encode($response);
-// }
-
-// if (isset($_POST['destroy'])) {
-//     $username = $_POST['destroy'];
-
-//     $isDeleted = $conn->query("DELETE FROM `tbl_accounts` WHERE username = '$username'");
-
-//     $response = array();
-
-//     if ($isDeleted) {
-//         $response["message"] = "Deleted";
-//         $response["status"] = 200;
-//     } else {
-//         $response["message"] = "Failed";
-//         $response["status"] = 400;
-//     }
-//     echo json_encode($response);
-
-// }
 ?>

@@ -35,7 +35,7 @@ const Register = () => {
     };
 
     axios.post(api, "store=" + JSON.stringify(payload)).then((response) => {
-      console.log(response);
+      alert(response.data.message);
     });
   };
 

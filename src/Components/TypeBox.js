@@ -1,3 +1,4 @@
+import { type } from "@testing-library/user-event/dist/type";
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "react-bootstrap";
 
@@ -18,11 +19,13 @@ const TypeBox = () => {
   const inputRef = useRef(null); // focus sa typebox
 
   const [errorCount, setErrorCount] = useState(0);
+  const [totalErr, setTotalErr] = useState(0);
   const [totalCharactersTyped, setTotalCharactersTyped] = useState(0);
+  const [totalChars, setTotalChars] = useState(0)
   const [totalWordsTyped, setTotalWordsTyped] = useState(0);
 
   const wpm = totalWordsTyped; 
-  const cpm = totalCharactersTyped; 
+  const cpm = totalChars; 
   const accuracy =
     ((totalCharactersTyped - errorCount) / totalCharactersTyped) * 100;
 
@@ -40,7 +43,7 @@ const TypeBox = () => {
       setTimeRemaining(TIMER_DURATION);
       setInputDisabled(true);
       setErrorCount(0);  
-      setTotalCharactersTyped(0);
+      setTotalChars(0);
       setTotalWordsTyped(0);
       resetTimer();
     } else {
@@ -69,12 +72,18 @@ const TypeBox = () => {
     const typedText = e.target.value;
     setInputValue(typedText);
 
+
     const errorCount = typedText.split("").reduce((err, char, index) => {
       return char !== quote[index] ? err + 1 : err;
     }, 0);
 
     setTotalCharactersTyped(typedText.length);
     setErrorCount(errorCount);
+
+
+    if (timeRemaining > 0) {
+      setTotalChars((prevTotal) => prevTotal + 1);
+    }
 
     const quoteColor = quote.split("").map((char, index) => {
       if (typedText[index] === char) {
@@ -91,8 +100,7 @@ const TypeBox = () => {
     );
     if (isInputCorrect) {
       setTotalWordsTyped((prevWords) => prevWords + 1);
-      setErrorCount((prevErr) => prevErr);
-      setTotalCharactersTyped((prevChar) => prevChar);
+      setTotalChars((prevTotal) => prevTotal + 1);
       getRandomQuote();
     } else if (typedText.length === quote.length) {
       getRandomQuote();
