@@ -1,33 +1,28 @@
-import { useState } from 'react';
+import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-
-function Header() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const handleLogOut = () => {
-    setIsLoggedIn(false);
-  }
+function Header({ isLoggedIn, username, onLogout, onLoginClick }) {
   return (
     <Navbar expand="lg" className="nav" data-bs-theme="dark" bg="dark">
       <Container>
-        <Navbar.Brand href="/">Type Titan</Navbar.Brand>
+        <Navbar.Brand href="/">TypeTitan</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/leaderboards">Leaderboards</Nav.Link>
-            <NavDropdown title="Account" id="basic-nav-dropdown" className='ml-auto'>
-              <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Settings
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/" onClick={handleLogOut}>
-                Signout
-              </NavDropdown.Item>
-            </NavDropdown>
+          </Nav>
+          <Nav className="ml-auto"> 
+            {isLoggedIn ? (
+              <NavDropdown title={username} id="basic-nav-dropdown">
+                <NavDropdown.Item href="/" onClick={onLogout}>
+                  Signout
+                </NavDropdown.Item>
+              </NavDropdown>
+            ) : []
+            }
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 import { useState } from 'react';
 import axios from 'axios';
 
-const Login = () => {
+const Login = ( { onLoginSuccess }) => {
 
     let apiLogin = "http://localhost/typetitan/src/Backend/login.php"
     const [username, setUsername] = useState('');
@@ -29,10 +29,12 @@ const Login = () => {
         .then((response) => {
           const responseData = response.data;
           if (responseData.status === 200) {
-            setIsLoggedIn(true);
+            onLoginSuccess(true, username);
+            console.log(isLoggedIn);
             alert(response.data.message);
           } else{
           alert(response.data.message);
+          console.log(isLoggedIn);
           }
         })
       }

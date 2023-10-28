@@ -28,6 +28,7 @@ const Register = () => {
     if (password !== confirmPassword) {
       event.preventDefault();
       alert("Passwords do not match!");
+      return;
     }
     let payload = {
       username: username,
