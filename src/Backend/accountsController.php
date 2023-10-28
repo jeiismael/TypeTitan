@@ -11,10 +11,10 @@ if (isset($_GET['index'])) {
         array_push($response, $row);
     }
 
-    echo json_encode($response); //response()->json(Accounts::all());
+    echo json_encode($response); 
 }
 // Register
-if (isset($_POST['store'])) { //function store(Request $request)
+if (isset($_POST['store'])) { 
     $request = json_decode($_POST['store']);
 
     $newAccount = array(

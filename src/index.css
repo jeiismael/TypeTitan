@@ -363,3 +363,38 @@ tr:first-child {
   text-decoration: underline;
 }
 
+.home {
+  height: 95vh;
+  background-image: url(bg.png);
+}
+
+.homeimage {
+  width: 1000px;
+  height: 
+}
+
+.leaderpagetable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* This centers the content vertically in the middle of the viewport */
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    display: flex;
+    justify-content: center;
+    background-color: #f0f0f0; /* Optional background color for the entire page */
+    min-height: 100vh;
+  }
+  
+  .center-table {
+    text-align: center; /* Optional: Center-align the content within the table */
+    margin-top: 20px; /* Adjust this value to control the distance from the top */
+  }
+  

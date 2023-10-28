@@ -1,10 +1,48 @@
-import { type } from "@testing-library/user-event/dist/type";
+
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "react-bootstrap";
 
-const TypeBox = () => {
+const  objectToFormData = (obj) => {
+  const formData = new FormData();
+
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      formData.append(key, obj[key]);
+    }
+  }
+
+  return formData;
+}
+
+
+const TypeBox = ({ username }) => {
+  
   const RANDOM_QUOTE_API_URL = "http://api.quotable.io/random";
-  const TIMER_DURATION = 60;
+  const TIMER_DURATION = 5;
+  
+
+  const saveDataToServer = (username) => {
+    const data = {
+      username: username,
+      cpm: cpm.toFixed(2),
+      err: errorCount,
+      wpm: wpm.toFixed(2),
+      accuracy: accuracy.toFixed(2),
+    };
+     const formData = objectToFormData(data);
+     fetch("http://localhost/typetitan/src/Backend/stats.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.text())
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+
+  };
   
 
   const [quote, setQuote] = useState("Press 'Start' to begin.");
@@ -19,7 +57,7 @@ const TypeBox = () => {
   const inputRef = useRef(null); // focus sa typebox
 
   const [errorCount, setErrorCount] = useState(0);
-  const [totalErr, setTotalErr] = useState(0);
+  const [totalError, setTotalError] = useState(0);
   const [totalCharactersTyped, setTotalCharactersTyped] = useState(0);
   const [totalChars, setTotalChars] = useState(0)
   const [totalWordsTyped, setTotalWordsTyped] = useState(0);
@@ -81,6 +119,7 @@ const TypeBox = () => {
     setErrorCount(errorCount);
 
 
+
     if (timeRemaining > 0) {
       setTotalChars((prevTotal) => prevTotal + 1);
     }
@@ -139,6 +178,13 @@ const TypeBox = () => {
     }
   }, [isInputDisabled]);
 
+
+  useEffect(() => {
+    if (timeRemaining === 0) {
+      saveDataToServer(username);
+    }
+  }, [timeRemaining]);
+
   return (
     <>
       <div className="boxes">
@@ -191,6 +237,8 @@ const TypeBox = () => {
         </div>
       </div>
     </div>
+
+    
   </>
   );
 };

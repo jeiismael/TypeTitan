@@ -3,9 +3,9 @@ import TypeBox from "./TypeBox";
 import TypeBoxBeginner from "./TypeBoxBeginner";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-const HomePage = () => {
+const Main = () => {
   return (
-    <div className="content">
+      <>
       <Router>
         <Routes>
           <Route path="/beginner" element={<TypeBoxBeginner />} />
@@ -18,8 +18,8 @@ const HomePage = () => {
         </Routes>
       </Router>
       <Levels></Levels>
-    </div>
+      </>
   );
 };
 
-export default HomePage;
+export default Main;

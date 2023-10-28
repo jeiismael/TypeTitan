@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2023 at 01:00 PM
+-- Generation Time: Oct 28, 2023 at 07:36 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -36,6 +36,19 @@ CREATE TABLE `tbl_accounts` (
   `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tbl_accounts`
+--
+
+INSERT INTO `tbl_accounts` (`id`, `username`, `password`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(69, 'jerry', '123', NULL, '2023-10-20 09:59:21', NULL),
+(70, 'joy', 'joy', NULL, '2023-10-20 10:55:08', NULL),
+(71, 'jade', 'qwe', NULL, '2023-10-20 15:55:46', NULL),
+(72, 'qweqwe', 'qwe', NULL, '2023-10-22 05:47:41', NULL),
+(73, 'qwe', 'qwe', NULL, '2023-10-22 05:47:48', NULL),
+(74, 'ismael', 'qwerty', NULL, '2023-10-22 07:09:38', NULL),
+(75, 'newtest', 'qwe', NULL, '2023-10-27 14:32:52', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -44,11 +57,11 @@ CREATE TABLE `tbl_accounts` (
 
 CREATE TABLE `tbl_stats` (
   `id` int(11) NOT NULL,
-  `account_id` int(11) DEFAULT NULL,
-  `WPM` int(11) DEFAULT NULL,
-  `CPM` int(11) DEFAULT NULL,
-  `Errors` int(11) DEFAULT NULL,
-  `Accuracy` double DEFAULT NULL
+  `username` varchar(50) DEFAULT NULL,
+  `cpm` int(11) DEFAULT NULL,
+  `wpm` int(11) DEFAULT NULL,
+  `err` int(11) DEFAULT NULL,
+  `accuracy` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -59,14 +72,18 @@ CREATE TABLE `tbl_stats` (
 -- Indexes for table `tbl_accounts`
 --
 ALTER TABLE `tbl_accounts`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `username_3` (`username`),
+  ADD UNIQUE KEY `username_4` (`username`),
+  ADD KEY `username_2` (`username`);
 
 --
 -- Indexes for table `tbl_stats`
 --
 ALTER TABLE `tbl_stats`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `account_id` (`account_id`);
+  ADD KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -76,13 +93,13 @@ ALTER TABLE `tbl_stats`
 -- AUTO_INCREMENT for table `tbl_accounts`
 --
 ALTER TABLE `tbl_accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `tbl_stats`
 --
 ALTER TABLE `tbl_stats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Constraints for dumped tables
@@ -92,7 +109,7 @@ ALTER TABLE `tbl_stats`
 -- Constraints for table `tbl_stats`
 --
 ALTER TABLE `tbl_stats`
-  ADD CONSTRAINT `tbl_stats_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `tbl_accounts` (`id`);
+  ADD CONSTRAINT `tbl_stats_ibfk_1` FOREIGN KEY (`username`) REFERENCES `tbl_accounts` (`username`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
