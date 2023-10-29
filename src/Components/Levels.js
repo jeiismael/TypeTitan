@@ -1,5 +1,5 @@
 import Figure from 'react-bootstrap/Figure';
-import Beginner from './Beginner.png';
+import Beginner from './beginner.png';
 import Intermediate from './Intermediate.png';
 import Expert from './Expert.png';
 import Image from 'react-bootstrap/Image';
@@ -7,6 +7,9 @@ import Image from 'react-bootstrap/Image';
 function Levels() {
   return (
     <div className='levels'>
+      <br />
+      <br />
+      <br />
       <a href="/beginner">
         <Image className='levelimage' src={Beginner} alt="Beginner Level" />
       </a>

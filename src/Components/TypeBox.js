@@ -187,6 +187,7 @@ const TypeBox = ({ username }) => {
 
   return (
     <>
+      <div className="typebox">
       <div className="boxes">
         <div className="cpm">
           <div>CPM: {cpm.toFixed(2)}</div>
@@ -204,7 +205,7 @@ const TypeBox = ({ username }) => {
           <h1>{timeRemaining}</h1>
         </div>
       </div>
-      <div className="typebox">
+      
         <div className="quote">
           {quote.split("").map((char, index) => (
             <span
@@ -226,7 +227,6 @@ const TypeBox = ({ username }) => {
             onChange={handleInputChange}
           ></textarea>
         </div>
-        <div className="button-area">
           <Button
             className="restart_btn"
             variant="dark"
@@ -234,7 +234,6 @@ const TypeBox = ({ username }) => {
           >
             {isFetchingQuote ? "Reset" : "Start"}
           </Button>
-        </div>
       </div>
     </div>
 

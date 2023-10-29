@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Table } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
 
 class Leaderboard extends Component {
   constructor() {
@@ -9,11 +11,10 @@ class Leaderboard extends Component {
   }
 
   componentDidMount() {
-    // Fetch the leaderboard data from your server
-    fetch("http://localhost/typetitan/src/Backend/leaderboards.php") // Replace with your actual API endpoint
+    fetch("http://localhost/typetitan/src/Backend/leaderboards.php")
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ leaderboardData: data }); // Update the state with the fetched data
+        this.setState({ leaderboardData: data }); 
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -22,9 +23,8 @@ class Leaderboard extends Component {
 
   render() {
     return (
-      <div >
-        <div className="leaderpagetable">
-        <table>
+      
+        <Table striped hover className='leaderpagetable'>
           <thead>
             <tr>
               <th>Rank</th>
@@ -41,9 +41,8 @@ class Leaderboard extends Component {
               </tr>
             ))}
           </tbody>
-        </table>
-        </div>
-      </div>
+        </Table>
+        
     );
   }
 }

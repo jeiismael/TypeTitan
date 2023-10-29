@@ -31,19 +31,27 @@ const App = () => {
   
     return ( 
         <>
-        <Header />
+        {/* <Header />
           <Routes>
             <Route path="/" element={<Home />}/>
             <Route path="/leaderboards" element={<LeaderPage />} />
-          </Routes>
-          
-            {/* <Header isLoggedIn={isLoggedIn} username={username} onLogout={handleLogout}/>
-            {isLoggedIn ? <><LargeLeaderBoards /></> : <Login onLoginSuccess={handleLoginSuccess}/>}
-            <div className="content">
-            <TypeBox username={username}></TypeBox>
+          </Routes> */}
+            
+            <Header isLoggedIn={isLoggedIn} username={username} onLogout={handleLogout}/>
+            <div className="parent">
+              <div className="div1">
+                <TypeBox username={username}></TypeBox>
+              </div>
+              <div className="div2">
+                <Levels />
+              </div>
+              <div className="div3">
+                {isLoggedIn ? <><LargeLeaderBoards /></> : <Login onLoginSuccess={handleLoginSuccess}/>}
+              </div>
+                <div className="div4">{isLoggedIn ? [] : <MiniLeaderBoards /> }
+              </div>
             </div>
-            {isLoggedIn ? [] : <MiniLeaderBoards /> }
-            <Footer></Footer> */}
+            <Footer></Footer>
             
         </>
      );

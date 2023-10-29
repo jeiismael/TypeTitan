@@ -34,11 +34,11 @@ const Login = ({ onLoginSuccess }) => {
       const responseData = response.data;
       if (responseData.status === 200) {
         onLoginSuccess(true, username);
-        console.log(isLoggedIn);
+        
         alert(response.data.message);
       } else {
         alert(response.data.message);
-        console.log(isLoggedIn);
+        
       }
     });
   };
@@ -60,6 +60,7 @@ const Login = ({ onLoginSuccess }) => {
                 onChange={handleUsernameChange}
                 aria-label="Username"
                 aria-describedby="basic-addon1"
+                required
               />
             </InputGroup>
             <InputGroup className="mb-3">
@@ -70,6 +71,7 @@ const Login = ({ onLoginSuccess }) => {
                 onChange={handlePasswordChange}
                 id="inputPassword"
                 aria-describedby="passwordHelpBlock"
+                required
               />
             </InputGroup>
             <Button

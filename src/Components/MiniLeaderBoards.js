@@ -2,6 +2,7 @@ import Table from 'react-bootstrap/Table';
 
 function MiniLeaderBoards() {
   return (
+    <div className='miniLContainer'>
     <Table striped hover className='miniLeaderBoards'>
       <thead>
         <tr>
@@ -31,6 +32,7 @@ function MiniLeaderBoards() {
         </tr>
       </tbody>
     </Table>
+    </div>
   );
 }
 
