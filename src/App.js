@@ -1,60 +1,126 @@
-import Header from "./Components/Header";
-import LoginContainer from "./Components/LoginContainer";
+import { AuthProvider } from "./AuthContext";
+import LoginContainer from "./Components/Sections/LoginContainer";
 import Main from "./Components/Main";
-import TypeBox from "./Components/TypeBox";
-import Login from "./Components/Login";
-import MiniLeaderBoards from "./Components/MiniLeaderBoards";
-import Footer from "./Components/Footer";
+import TypeBoxIntermediate from "./Components/TypeBox/TypeBoxIntermediate";
+import TypeBoxExpert from "./Components/TypeBox/TypeBoxExpert";
+import Login from "./Components/Sections/Login";
+import MiniLeaderBoards from "./Components/Leaderboards/MiniLeaderBoards";
+import Footer from "./Components/Sections/Footer";
 import { useState } from "react";
-import LargeLeaderBoards from "./Components/LargeLeaderBoards";
-import Levels from "./Components/Levels";
+import LargeLeaderBoards from "./Components/Leaderboards/LargeLeaderBoards";
+import Levels from "./Components/Sections/Levels";
 import { Route, Routes } from "react-router-dom";
-import LeaderPage from "./Components/LeaderPage";
+import LeaderPage from "./Components/Leaderboards/LeaderPage";
 import Home from "./Components/Home";
 
+import Header from "./Components/Sections/Header";
+import { useAuth } from "./AuthContext";
 
 const App = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [username, setUsername] = useState();
+  const { isLoggedIn, login, logout } = useAuth();
+  const [username, setUsername] = useState();
 
-    const handleLoginSuccess = (loggedIn, user) => {
-      setIsLoggedIn(loggedIn);
-      if (loggedIn) {
-        setUsername(user); 
-      }
-    };
+  const handleLoginSuccess = (loggedIn, user) => {
+    if (loggedIn) {
+      setUsername(user);
+    }
+  };
 
-    const handleLogout = () => {
-        setIsLoggedIn(false);
-        setUsername('');
-      };
-  
-    return ( 
-        <>
-        {/* <Header />
-          <Routes>
-            <Route path="/" element={<Home />}/>
-            <Route path="/leaderboards" element={<LeaderPage />} />
-          </Routes> */}
-            
-            <Header isLoggedIn={isLoggedIn} username={username} onLogout={handleLogout}/>
-            <div className="parent">
-              <div className="div1">
-                <TypeBox username={username}></TypeBox>
+  const handleLogout = () => {
+    logout();
+    setUsername("");
+  };
+
+  return (
+    <>
+      <Header
+        isLoggedIn={isLoggedIn}
+        username={username}
+        onLogout={handleLogout}
+      />
+      <Routes>
+        
+        <Route
+          path="/"
+          element={
+            <>
+              <div className="parent">
+                <div className="div1">
+                  <TypeBoxExpert username={username} />
+                </div>
+                <div className="div2">
+                  <Levels />
+                </div>
+                <div className="div3">
+                  {isLoggedIn ? (
+                    <LargeLeaderBoards />
+                  ) : (
+                    <Login onLoginSuccess={handleLoginSuccess} />
+                  )}
+                </div>
+                <div className="div4">
+                  {isLoggedIn ? [] : <MiniLeaderBoards />}
+                </div>
               </div>
-              <div className="div2">
-                <Levels />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/beginner"
+          element={
+            <>
+              <div className="parent">
+                <div className="div1">
+                  <TypeBoxIntermediate username={username} />
+                </div>
+                <div className="div2">
+                  <Levels />
+                </div>
+                <div className="div3">
+                  {isLoggedIn ? (
+                    <LargeLeaderBoards />
+                  ) : (
+                    <Login onLoginSuccess={handleLoginSuccess} />
+                  )}
+                </div>
+                <div className="div4">
+                  {isLoggedIn ? [] : <MiniLeaderBoards />}
+                </div>
               </div>
-              <div className="div3">
-                {isLoggedIn ? <><LargeLeaderBoards /></> : <Login onLoginSuccess={handleLoginSuccess}/>}
+            </>
+          }
+        ></Route>
+
+        <Route
+          path="/intermediate"
+          element={
+            <>
+              <div className="parent">
+                <div className="div1">
+                  <TypeBoxIntermediate username={username} />
+                </div>
+                <div className="div2">
+                  <Levels />
+                </div>
+                <div className="div3">
+                  {isLoggedIn ? (
+                    <LargeLeaderBoards />
+                  ) : (
+                    <Login onLoginSuccess={handleLoginSuccess} />
+                  )}
+                </div>
+                <div className="div4">
+                  {isLoggedIn ? [] : <MiniLeaderBoards />}
+                </div>
               </div>
-                <div className="div4">{isLoggedIn ? [] : <MiniLeaderBoards /> }
-              </div>
-            </div>
-            <Footer></Footer>
-            
-        </>
-     );
-}
- 
+            </>
+          }
+        ></Route>
+        <Route path="/leaderboards" element={<LeaderPage />} />
+      </Routes>
+      <Footer></Footer>
+      </>
+  );
+};
+
 export default App;

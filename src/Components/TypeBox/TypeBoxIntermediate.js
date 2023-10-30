@@ -1,6 +1,7 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "react-bootstrap";
+import jsonData from "../../assets/intermediate.json";
+import { type } from "@testing-library/user-event/dist/type";
 
 const  objectToFormData = (obj) => {
   const formData = new FormData();
@@ -17,8 +18,7 @@ const  objectToFormData = (obj) => {
 
 const TypeBox = ({ username }) => {
   
-  const RANDOM_QUOTE_API_URL = "http://api.quotable.io/random";
-  const TIMER_DURATION = 5;
+  const TIMER_DURATION = 60;
   
 
   const saveDataToServer = (username) => {
@@ -58,6 +58,7 @@ const TypeBox = ({ username }) => {
 
   const [errorCount, setErrorCount] = useState(0);
   const [totalError, setTotalError] = useState(0);
+  const [totalErrors, setTotalErrors] = useState(0);
   const [totalCharactersTyped, setTotalCharactersTyped] = useState(0);
   const [totalChars, setTotalChars] = useState(0)
   const [totalWordsTyped, setTotalWordsTyped] = useState(0);
@@ -65,7 +66,7 @@ const TypeBox = ({ username }) => {
   const wpm = totalWordsTyped; 
   const cpm = totalChars; 
   const accuracy =
-    ((totalCharactersTyped - errorCount) / totalCharactersTyped) * 100;
+    ((totalCharactersTyped - totalError) / totalCharactersTyped) * 100;
 
   const resetTimer = () => {
     setTimeRemaining(TIMER_DURATION);
@@ -80,7 +81,8 @@ const TypeBox = ({ username }) => {
       setQuote("Press Start to begin.");
       setTimeRemaining(TIMER_DURATION);
       setInputDisabled(true);
-      setErrorCount(0);  
+      setErrorCount(0); 
+      setTotalError(0); 
       setTotalChars(0);
       setTotalWordsTyped(0);
       resetTimer();
@@ -93,18 +95,16 @@ const TypeBox = ({ username }) => {
     }
   };
 
-  const getRandomQuote = async () => {
-    try {
-      const response = await fetch(RANDOM_QUOTE_API_URL);
-      const data = await response.json();
-      setQuote(data.content);
-      setInputValue("");
-      setInputClasses(Array(data.content.length).fill("untyped"));
-      setIsTyping(true);
-    } catch (error) {
-      console.error("Error fetching random quote:", error);
-    }
+  const getRandomQuote = () => {
+    const randomIndex = Math.floor(Math.random() * jsonData.length);
+    const randomEntry = jsonData[randomIndex];
+    setQuote(randomEntry.content);
+    setInputValue("");
+    setInputClasses(Array(randomEntry.content.length).fill("untyped"));
+    setIsTyping(true);
   };
+
+
 
   const handleInputChange = (e) => {
     const typedText = e.target.value;
@@ -117,9 +117,8 @@ const TypeBox = ({ username }) => {
 
     setTotalCharactersTyped(typedText.length);
     setErrorCount(errorCount);
-
-
-
+    
+    
     if (timeRemaining > 0) {
       setTotalChars((prevTotal) => prevTotal + 1);
     }
@@ -152,6 +151,31 @@ const TypeBox = ({ username }) => {
   const handleCopy = (e) => {
     e.preventDefault();
   };
+
+  useEffect(() => {
+    let totalWrongKeystrokes = 0;
+
+    const trackWrongKeystrokes = (event) => {
+      const typedText = inputValue;
+      const charIndex = typedText.length;
+
+      if (charIndex < quote.length && event.key !== quote[charIndex]) {
+        totalWrongKeystrokes += 1;
+      }
+    };
+
+    // Listen for keyboard events to track wrong keystrokes
+    window.addEventListener("keydown", trackWrongKeystrokes);
+
+    // Clear the tracking and update the total error count when the timer expires
+    return () => {
+      window.removeEventListener("keydown", trackWrongKeystrokes);
+      if (timeRemaining === 0) {
+        setTotalError((prevTotalError) => prevTotalError + totalWrongKeystrokes);
+      }
+    };
+  }, [timeRemaining]);
+
 
   useEffect(() => {
     let timer;

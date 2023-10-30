@@ -1,7 +1,7 @@
 import { Tabs, Tab } from "react-bootstrap";
 import { useState } from "react";
 import Login from "./Login.js";
-import Register from "./Register.js";
+import Register from "../Register.js";
 
 const LoginContainer = ( { onLoginSuccess }) => {
   const [key, setKey] = useState("Login");

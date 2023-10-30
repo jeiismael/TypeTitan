@@ -1,7 +1,6 @@
-import Figure from 'react-bootstrap/Figure';
-import Beginner from './beginner.png';
-import Intermediate from './Intermediate.png';
-import Expert from './Expert.png';
+import Beginner from './../Images/beginner.png';
+import Intermediate from './../Images/Intermediate.png';
+import Expert from './../Images/Expert.png';
 import Image from 'react-bootstrap/Image';
 
 function Levels() {

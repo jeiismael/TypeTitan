@@ -1,9 +1,9 @@
 import React from "react";
-import TypeBox from "./TypeBox";
-import Levels from "./Levels";
-import MiniLeaderBoards from "./MiniLeaderBoards";
-import Login from "./Login";
-import Footer from "./Footer"
+import TypeBox from "./TypeBox/TypeBoxExpert";
+import Levels from "./Sections/Levels";
+import MiniLeaderBoards from "./Leaderboards/MiniLeaderBoards";
+import Login from "./Sections/Login";
+import Footer from "./Sections/Footer"
 
 const Home = () => {
   return (

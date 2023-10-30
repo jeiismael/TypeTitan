@@ -4,18 +4,21 @@ import { Button } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
 import { Tabs, Tab } from "react-bootstrap";
-import Register from "./Register.js";
+import Register from "../Register.js";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Levels from "./Levels.js";
-import TypeBoxBeginner from "./TypeBoxBeginner.js";
-import TypeBox from "./TypeBox.js";
+import TypeBoxBeginner from "../TypeBox/TypeBoxBeginner.js";
+import TypeBox from "../TypeBox/TypeBoxExpert.js";
+import { useAuth } from "../../AuthContext.js";
 
 const Login = ({ onLoginSuccess }) => {
   let apiLogin = "http://localhost/typetitan/src/Backend/login.php";
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isLoggedIn, login, logout } = useAuth();
   const [key, setKey] = useState("Login");
+
+
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -33,6 +36,7 @@ const Login = ({ onLoginSuccess }) => {
     axios.post(apiLogin, "auth=" + JSON.stringify(payload)).then((response) => {
       const responseData = response.data;
       if (responseData.status === 200) {
+        login();
         onLoginSuccess(true, username);
         
         alert(response.data.message);

@@ -1,10 +1,14 @@
 import React from 'react';
+import { useAuth } from "./../../AuthContext";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-function Header({ isLoggedIn, username, onLogout, onLoginClick }) {
+
+function Header({ username, onLogout }) {
+  const { isLoggedIn } = useAuth(); // Removed 'login' and 'logout' as they are not needed here
+
   return (
     <Navbar expand="lg" className="nav" data-bs-theme="dark" bg="dark">
       <Container>
@@ -21,7 +25,7 @@ function Header({ isLoggedIn, username, onLogout, onLoginClick }) {
                   Signout
                 </NavDropdown.Item>
               </NavDropdown>
-            ) : []
+            ) : null // Use 'null' instead of an empty array
             }
           </Nav>
         </Navbar.Collapse>

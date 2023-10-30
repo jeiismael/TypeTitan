@@ -1,6 +1,6 @@
-import Levels from "./Levels";
-import TypeBox from "./TypeBox";
-import TypeBoxBeginner from "./TypeBoxBeginner";
+import Levels from "./Sections/Levels";
+import TypeBox from "./TypeBox/TypeBoxExpert";
+import TypeBoxBeginner from "./TypeBox/TypeBoxBeginner";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const Main = () => {
