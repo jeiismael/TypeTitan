@@ -11,7 +11,7 @@ class LargeLeaderBoards extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost/typetitan/src/Backend/leaderExpert.php")
+    fetch("http://localhost/typetitan/src/Backend/leaderIntermediate.php")
       .then((response) => response.json())
       .then((data) => {
         this.setState({ leaderboardData: data }); 

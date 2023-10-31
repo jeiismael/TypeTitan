@@ -1,33 +1,29 @@
-import { AuthProvider } from "./AuthContext";
-import LoginContainer from "./Components/Sections/LoginContainer";
-import Main from "./Components/Main";
-import TypeBoxIntermediate from "./Components/TypeBox/TypeBoxIntermediate";
-import TypeBoxExpert from "./Components/TypeBox/TypeBoxExpert";
-import Login from "./Components/Sections/Login";
-import MiniLeaderBoards from "./Components/Leaderboards/MiniLeaderBoards";
-import Footer from "./Components/Sections/Footer";
-import { useState } from "react";
-import LargeLeaderBoards from "./Components/Leaderboards/LargeLeaderBoards";
-import Levels from "./Components/Sections/Levels";
+// App.js
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import LeaderPage from "./Components/Leaderboards/LeaderPage";
-import Home from "./Components/Home";
-
 import Header from "./Components/Sections/Header";
-import { useAuth } from "./AuthContext";
+import Footer from "./Components/Sections/Footer";
+import LeaderPage from "./Components/Leaderboards/LeaderPage";
+import Home from "./Components/Pages/Home";
+import HomeBeginner from "./Components/Pages/HomeBeginner";
+import HomeIntermediate from "./Components/Pages/HomeIntermediate";
+import HomeExpert from "./Components/Pages/HomeExpert";
+import TypeBoxBegginer from "./Components/TypeBox/TypeBoxBeginner";
 
 const App = () => {
-  const { isLoggedIn, login, logout } = useAuth();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState();
 
   const handleLoginSuccess = (loggedIn, user) => {
+    setIsLoggedIn(loggedIn);
+    console.log(user);
     if (loggedIn) {
       setUsername(user);
     }
   };
 
   const handleLogout = () => {
-    logout();
+    setIsLoggedIn(false);
     setUsername("");
   };
 
@@ -39,87 +35,14 @@ const App = () => {
         onLogout={handleLogout}
       />
       <Routes>
-        
-        <Route
-          path="/"
-          element={
-            <>
-              <div className="parent">
-                <div className="div1">
-                  <TypeBoxExpert username={username} />
-                </div>
-                <div className="div2">
-                  <Levels />
-                </div>
-                <div className="div3">
-                  {isLoggedIn ? (
-                    <LargeLeaderBoards />
-                  ) : (
-                    <Login onLoginSuccess={handleLoginSuccess} />
-                  )}
-                </div>
-                <div className="div4">
-                  {isLoggedIn ? [] : <MiniLeaderBoards />}
-                </div>
-              </div>
-            </>
-          }
-        ></Route>
-        <Route
-          path="/beginner"
-          element={
-            <>
-              <div className="parent">
-                <div className="div1">
-                  <TypeBoxIntermediate username={username} />
-                </div>
-                <div className="div2">
-                  <Levels />
-                </div>
-                <div className="div3">
-                  {isLoggedIn ? (
-                    <LargeLeaderBoards />
-                  ) : (
-                    <Login onLoginSuccess={handleLoginSuccess} />
-                  )}
-                </div>
-                <div className="div4">
-                  {isLoggedIn ? [] : <MiniLeaderBoards />}
-                </div>
-              </div>
-            </>
-          }
-        ></Route>
-
-        <Route
-          path="/intermediate"
-          element={
-            <>
-              <div className="parent">
-                <div className="div1">
-                  <TypeBoxIntermediate username={username} />
-                </div>
-                <div className="div2">
-                  <Levels />
-                </div>
-                <div className="div3">
-                  {isLoggedIn ? (
-                    <LargeLeaderBoards />
-                  ) : (
-                    <Login onLoginSuccess={handleLoginSuccess} />
-                  )}
-                </div>
-                <div className="div4">
-                  {isLoggedIn ? [] : <MiniLeaderBoards />}
-                </div>
-              </div>
-            </>
-          }
-        ></Route>
-        <Route path="/leaderboards" element={<LeaderPage />} />
+        <Route exact path="/leaderboards" element={<LeaderPage />} />
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/beginner" element={<HomeBeginner username={username} />} /> 
+        <Route exact path="/intermediate" element={<HomeIntermediate username={username} />} />
+        <Route exact path="/expert" element={<HomeExpert username={username} />} />
       </Routes>
-      <Footer></Footer>
-      </>
+      <Footer />
+    </>
   );
 };
 

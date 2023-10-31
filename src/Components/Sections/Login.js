@@ -36,8 +36,10 @@ const Login = ({ onLoginSuccess }) => {
     axios.post(apiLogin, "auth=" + JSON.stringify(payload)).then((response) => {
       const responseData = response.data;
       if (responseData.status === 200) {
-        login();
+        
         onLoginSuccess(true, username);
+        login();
+        
         
         alert(response.data.message);
       } else {

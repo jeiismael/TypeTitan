@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Table } from "react-bootstrap";
 
 
-class LargeLeaderBoards extends Component {
+class MiniLeaderBoards extends Component {
   constructor() {
     super();
     this.state = {
@@ -11,7 +11,7 @@ class LargeLeaderBoards extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost/typetitan/src/Backend/leaderExpert.php")
+    fetch("http://localhost/typetitan/src/Backend/leaderBeginner.php")
       .then((response) => response.json())
       .then((data) => {
         this.setState({ leaderboardData: data }); 
@@ -22,21 +22,22 @@ class LargeLeaderBoards extends Component {
   }
 
   render() {
+    const limitedData = this.state.leaderboardData.slice(0, 5);
     return (
-        <Table striped hover className='largeLeaderBoards'>
+        <Table striped hover className='miniLeaderBoards'>
           <thead>
             <tr>
               <th>Rank</th>
               <th>Username</th>
-              <th>WPM</th>
+              <th>CPM</th>
             </tr>
           </thead>
           <tbody>
-            {this.state.leaderboardData.map((user, index) => (
+            {limitedData.map((user, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{user.username}</td>
-                <td>{user.wpm}</td>
+                <td>{user.cpm}</td>
               </tr>
             ))}
           </tbody>
@@ -45,4 +46,4 @@ class LargeLeaderBoards extends Component {
   }
 }
 
-export default LargeLeaderBoards;
+export default MiniLeaderBoards;

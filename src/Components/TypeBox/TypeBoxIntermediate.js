@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "react-bootstrap";
 import jsonData from "../../assets/intermediate.json";
-import { type } from "@testing-library/user-event/dist/type";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 const  objectToFormData = (obj) => {
   const formData = new FormData();
@@ -20,6 +20,7 @@ const TypeBox = ({ username }) => {
   
   const TIMER_DURATION = 60;
   
+  
 
   const saveDataToServer = (username) => {
     const data = {
@@ -30,7 +31,7 @@ const TypeBox = ({ username }) => {
       accuracy: accuracy.toFixed(2),
     };
      const formData = objectToFormData(data);
-     fetch("http://localhost/typetitan/src/Backend/stats.php", {
+     fetch("http://localhost/typetitan/src/Backend/intermediatestats.php", {
       method: "POST",
       body: formData,
     })
@@ -211,6 +212,9 @@ const TypeBox = ({ username }) => {
 
   return (
     <>
+    
+    {isFetchingQuote ? <><br /><ProgressBar now={timeRemaining} animated max="60" variant="danger"/></> : null}
+      
       <div className="typebox">
       <div className="boxes">
         <div className="cpm">

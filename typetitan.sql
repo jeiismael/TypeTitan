@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2023 at 07:36 AM
+-- Generation Time: Oct 31, 2023 at 10:42 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -47,7 +47,8 @@ INSERT INTO `tbl_accounts` (`id`, `username`, `password`, `created_at`, `updated
 (72, 'qweqwe', 'qwe', NULL, '2023-10-22 05:47:41', NULL),
 (73, 'qwe', 'qwe', NULL, '2023-10-22 05:47:48', NULL),
 (74, 'ismael', 'qwerty', NULL, '2023-10-22 07:09:38', NULL),
-(75, 'newtest', 'qwe', NULL, '2023-10-27 14:32:52', NULL);
+(75, 'newtest', 'qwe', NULL, '2023-10-27 14:32:52', NULL),
+(76, 'dog', 'dog', NULL, '2023-10-28 07:06:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -63,6 +64,21 @@ CREATE TABLE `tbl_stats` (
   `err` int(11) DEFAULT NULL,
   `accuracy` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_stats`
+--
+
+INSERT INTO `tbl_stats` (`id`, `username`, `cpm`, `wpm`, `err`, `accuracy`) VALUES
+(36, 'joy', 180, 92, 0, 100),
+(37, 'joy', 180, 92, 0, 100),
+(38, 'ismael', 150, 80, 3, 98),
+(39, 'newtest', 100, 100, 25, 75),
+(41, 'dog', 23, 2, 8, 65.22),
+(42, 'jade', 300, 111, 0, 100),
+(43, 'jade', 151, 74, 1, 100),
+(44, 'jade', 14, 2, 1, 92.86),
+(45, 'joy', 27, 6, 12, 55.56);
 
 --
 -- Indexes for dumped tables
@@ -93,13 +109,13 @@ ALTER TABLE `tbl_stats`
 -- AUTO_INCREMENT for table `tbl_accounts`
 --
 ALTER TABLE `tbl_accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `tbl_stats`
 --
 ALTER TABLE `tbl_stats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- Constraints for dumped tables

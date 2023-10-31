@@ -22,6 +22,7 @@ class MiniLeaderBoards extends Component {
   }
 
   render() {
+    const limitedData = this.state.leaderboardData.slice(0, 5);
     return (
         <Table striped hover className='miniLeaderBoards'>
           <thead>
@@ -32,7 +33,7 @@ class MiniLeaderBoards extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.leaderboardData.map((user, index) => (
+            {limitedData.map((user, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{user.username}</td>

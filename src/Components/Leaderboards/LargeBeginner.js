@@ -11,7 +11,7 @@ class LargeLeaderBoards extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost/typetitan/src/Backend/leaderExpert.php")
+    fetch("http://localhost/typetitan/src/Backend/leaderBeginner.php")
       .then((response) => response.json())
       .then((data) => {
         this.setState({ leaderboardData: data }); 
@@ -28,7 +28,7 @@ class LargeLeaderBoards extends Component {
             <tr>
               <th>Rank</th>
               <th>Username</th>
-              <th>WPM</th>
+              <th>CPM</th>
             </tr>
           </thead>
           <tbody>
@@ -36,7 +36,7 @@ class LargeLeaderBoards extends Component {
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{user.username}</td>
-                <td>{user.wpm}</td>
+                <td>{user.cpm}</td>
               </tr>
             ))}
           </tbody>

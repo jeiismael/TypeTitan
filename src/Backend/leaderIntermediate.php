@@ -1,7 +1,7 @@
 <?php 
 include "config.php";
 
-$sql = "SELECT username, wpm, cpm FROM tbl_stats ORDER BY wpm DESC LIMIT 15";
+$sql = "SELECT username, wpm, cpm FROM tbl_intermediatestats ORDER BY wpm DESC LIMIT 15";
 $result = $conn->query($sql);
 
 $data = array();

@@ -1,3 +1,6 @@
+
+import React from "react";
+import { Link } from "react-router-dom";
 import Beginner from './../Images/beginner.png';
 import Intermediate from './../Images/Intermediate.png';
 import Expert from './../Images/Expert.png';
@@ -9,15 +12,15 @@ function Levels() {
       <br />
       <br />
       <br />
-      <a href="/beginner">
+      <Link to="/beginner">
         <Image className='levelimage' src={Beginner} alt="Beginner Level" />
-      </a>
-      <a href="/intermediate">
+      </Link>
+      <Link to="/intermediate"> 
         <Image className='levelimage' src={Intermediate} alt="Intermediate Level" />
-      </a>
-      <a href="/">
+      </Link>
+      <Link to="/expert">
         <Image className='levelimage' src={Expert} alt="Expert Level" />
-      </a>
+      </Link>
     </div>
   );
 }

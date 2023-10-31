@@ -1,4 +1,7 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
+.navbar-brand, .navbar-nav {
+  font-family: Agbalumo;
+}
 /*
 .parent {
   display: grid;
@@ -266,7 +269,7 @@
     border: solid;
     border-width: 5px;
     border-radius: 20px;
-    text-align: left;  
+    text-align: center;  
     border-radius: 20px;
   }
 
@@ -379,7 +382,7 @@ h1 {
 .leaderpage th, td {
   border: 3px solid #ccc;
   padding: 10px;
-  text-align: left;
+  text-align: center;
 }
 
 .leaderpage th {
@@ -433,3 +436,33 @@ h1 {
     justify-content: center;
     align-items: center;
   }
+
+  .div11 {
+    grid-area: 1 / 1 / 3 / 4; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .largeLeaderBoards {
+    max-width: 30%;
+    border: solid;
+    border-width: 5px;
+    border-radius: 20px;
+    text-align: left;  
+    border-radius: 20px;
+  }
+
+.leaderboard-container {
+  background-image: url(bg.png);
+  height: 90vh;
+  color: white;
+}
+
+body {
+  font-family: Agbalumo;
+}
+
+#fill-tab-example {
+  color: white;
+}

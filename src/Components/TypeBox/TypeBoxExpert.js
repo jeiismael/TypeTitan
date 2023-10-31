@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "react-bootstrap";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 const  objectToFormData = (obj) => {
   const formData = new FormData();
@@ -29,7 +30,7 @@ const TypeBox = ({ username }) => {
       accuracy: accuracy.toFixed(2),
     };
      const formData = objectToFormData(data);
-     fetch("http://localhost/typetitan/src/Backend/stats.php", {
+     fetch("http://localhost/typetitan/src/Backend/expertstats.php", {
       method: "POST",
       body: formData,
     })
@@ -186,6 +187,7 @@ const TypeBox = ({ username }) => {
 
   return (
     <>
+    {isFetchingQuote ? <><br /><ProgressBar now={timeRemaining} animated max="60" variant="danger"/></> : null}
       <div className="typebox">
       <div className="boxes">
         <div className="cpm">
