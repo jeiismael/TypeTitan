@@ -1,16 +1,20 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import Levels from "../Sections/Levels";
 import MiniLeaderBoards from "../Leaderboards/MiniLeaderBoards";
 import Login from "../Sections/Login";
 import Footer from "../Sections/Footer";
 import Main from "../TypeBox/Main";
-import Choose from "./../Images/default.png";
+import Choose from "./../Images/Choose";
 import LargeLeaderBoards from "../Leaderboards/LargeLeaderBoards";
-import TypeBoxBeginner from "../TypeBox/TypeBoxBeginner";
-import TypeBoxIntermediate from "../TypeBox/TypeBoxIntermediate";
-import TypeBoxExpert from "../TypeBox/TypeBoxExpert";
+
+import { Link } from "react-router-dom";
+import Beginner from "./../Images/beginner.png";
+import Intermediate from "./../Images/Intermediate.png";
+import Expert from "./../Images/Expert.png";
+import Image from "react-bootstrap/Image";
 
 const Home = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,11 +34,30 @@ const Home = () => {
   return (
     <>
       <div className="parent">
-        <div className="div11">
-          <img src={Choose} />
-        </div>
+        <Choose />
         <div className="div2">
-          <Levels />
+          <div className="levels">
+            <br />
+            <br />
+            <br />
+            <Link to="/beginner">
+              <Image
+                className="levelimage"
+                src={Beginner}
+                alt="Beginner Level"
+              />
+            </Link>
+            <Link to="/intermediate">
+              <Image
+                className="levelimage"
+                src={Intermediate}
+                alt="Intermediate Level"
+              />
+            </Link>
+            <Link to="/expert">
+              <Image className="levelimage" src={Expert} alt="Expert Level" />
+            </Link>
+          </div>
         </div>
         <div className="div3">
           {isLoggedIn ? (

@@ -18,7 +18,7 @@ const  objectToFormData = (obj) => {
 
 const TypeBox = ({ username }) => {
   
-  const TIMER_DURATION = 5;
+  const TIMER_DURATION = 10;
   
   
 

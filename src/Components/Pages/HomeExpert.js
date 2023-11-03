@@ -7,6 +7,7 @@ import Login from "../Sections/Login";
 import Footer from "../Sections/Footer";
 import Main from "../TypeBox/Main";
 import LargeExpert from "../Leaderboards/LargeExpert";
+import LargeIntermediate from "../Leaderboards/LargeIntermediate";
 import TypeBoxBeginner from "../TypeBox/TypeBoxBeginner";
 import TypeBoxIntermediate from "../TypeBox/TypeBoxIntermediate";
 import TypeBoxExpert from "../TypeBox/TypeBoxExpert";

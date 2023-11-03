@@ -11,7 +11,7 @@ if ($result->num_rows > 0) {
         $data[] = array(
             "username" => $row['username'],
             "wpm" => $row['wpm'],
-            "cpm" => $row['cpm']
+            "cpm" => $row['cpm'],
         );
     }
 }

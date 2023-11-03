@@ -1,6 +1,6 @@
 import TypeBoxBeginner from "./TypeBoxBeginner";
 import TypeBoxIntermediate from "./TypeBoxIntermediate";
-import TypeBoxExpert from "./TypeBoxExpert";
+
 import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
 import { useAuth } from "../../AuthContext";
 import { useState } from "react";
@@ -23,12 +23,12 @@ const Main = () => {
 
   return (
       <>
-        {/* <Routes>
-            <Route path="play/beginner" element={<TypeBoxBeginner username={username}/>}/>
-            <Route exact path="/play/intermediate" element={<TypeBoxIntermediate username={username}/>} />
-            <Route exact path="/play/expert" element={<h1>crazy</h1>} />
+        <Routes>
+            <Route exact path="/beginner" element={<TypeBoxBeginner username={username}/>}/>
+            <Route exact path="/intermediate" element={<TypeBoxIntermediate username={username}/>} />
+            <Route exact path="/expert" element={<h1>crazy</h1>} />
             <Route exact path="/" element={<h1>stupid</h1>} />
-        </Routes> */}
+        </Routes>
       </>
   );
 };

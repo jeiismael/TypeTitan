@@ -9,13 +9,19 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState('');
 
-  const login = () => {
+  const login = (user) => {
     setIsLoggedIn(true);
+    setUsername(user);
+    setIsLoggedIn(true);
+    console.log(username);
+    console.log(isLoggedIn);
   };
 
   const logout = () => {
     setIsLoggedIn(false);
+    setUsername('');
   };
 
   return (

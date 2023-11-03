@@ -18,7 +18,7 @@ const  objectToFormData = (obj) => {
 const TypeBox = ({ username }) => {
   
   const RANDOM_QUOTE_API_URL = "http://api.quotable.io/random";
-  const TIMER_DURATION = 60;
+  const TIMER_DURATION = 10;
   
 
   const saveDataToServer = (username) => {

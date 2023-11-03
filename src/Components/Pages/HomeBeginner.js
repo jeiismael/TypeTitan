@@ -9,7 +9,6 @@ import Main from "../TypeBox/Main";
 import LargeBeginner from "../Leaderboards/LargeBeginner";
 import TypeBoxBeginner from "../TypeBox/TypeBoxBeginner";
 import TypeBoxIntermediate from "../TypeBox/TypeBoxIntermediate";
-import TypeBoxExpert from "../TypeBox/TypeBoxExpert";
 import MiniBeginner from "./../Leaderboards/MiniBeginner"
 
 const Home = () => {

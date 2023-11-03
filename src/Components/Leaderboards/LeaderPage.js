@@ -60,7 +60,8 @@ class Leaderboard extends Component {
 
   render() {
     return (
-      <div className="leaderboard-container">
+      <>
+      
         <Tabs defaultActiveKey="home" id="fill-tab-example" className="mb-3" fill justify>
           <Tab eventKey="home" title="Overall">
             {this.renderTable(this.state.overallData)}
@@ -76,7 +77,7 @@ class Leaderboard extends Component {
           </Tab>
         </Tabs>
       
-      </div>
+      </>
       
     );
   }

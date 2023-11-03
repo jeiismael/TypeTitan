@@ -6,16 +6,13 @@ import axios from "axios";
 import { Tabs, Tab } from "react-bootstrap";
 import Register from "../Register.js";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Levels from "./Levels.js";
-import TypeBoxBeginner from "../TypeBox/TypeBoxBeginner.js";
-import TypeBox from "../TypeBox/TypeBoxExpert.js";
 import { useAuth } from "../../AuthContext.js";
 
 const Login = ({ onLoginSuccess }) => {
   let apiLogin = "http://localhost/typetitan/src/Backend/login.php";
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { isLoggedIn, login, logout } = useAuth();
+  const { login, logout } = useAuth();
   const [key, setKey] = useState("Login");
 
 
@@ -36,11 +33,9 @@ const Login = ({ onLoginSuccess }) => {
     axios.post(apiLogin, "auth=" + JSON.stringify(payload)).then((response) => {
       const responseData = response.data;
       if (responseData.status === 200) {
-        
         onLoginSuccess(true, username);
+    
         login();
-        
-        
         alert(response.data.message);
       } else {
         alert(response.data.message);

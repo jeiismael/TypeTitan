@@ -2,14 +2,9 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Levels from "../Sections/Levels";
-import MiniLeaderBoards from "../Leaderboards/MiniLeaderBoards";
 import Login from "../Sections/Login";
-import Footer from "../Sections/Footer";
-import Main from "../TypeBox/Main";
 import LargeIntermediate from "../Leaderboards/LargeIntermediate";
-import TypeBoxBeginner from "../TypeBox/TypeBoxBeginner";
 import TypeBoxIntermediate from "../TypeBox/TypeBoxIntermediate";
-import TypeBoxExpert from "../TypeBox/TypeBoxExpert";
 import MiniIntermediate from "./../Leaderboards/MiniIntermediate";
 
 const Home = () => {
