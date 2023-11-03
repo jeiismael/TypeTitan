@@ -5,7 +5,7 @@ function MiniLeaderBoards() {
     <Table striped hover className='miniLeaderBoards'>
       <thead>
         <tr>
-            <th colSpan={3}>Top 3</th>
+            <th colSpan={3}>Leaderboards</th>
         </tr>
         <tr>
           <th>Rank</th>
